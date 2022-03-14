@@ -1,7 +1,3 @@
-//
-// Created by cha on 2022/3/11.
-//
-
 #ifndef MYSQL2REDIS__THREAD_POOL_H_
 #define MYSQL2REDIS__THREAD_POOL_H_
 

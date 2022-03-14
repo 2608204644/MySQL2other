@@ -1,7 +1,3 @@
-//
-// Created by cha on 2022/3/10.
-//
-
 #include "mysql_connector.h"
 
 MysqlConnector::MysqlConnector() = default;

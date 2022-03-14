@@ -1,6 +1,4 @@
-
 #include "my_decimal.h"
-
 
 int decimal_operation_results(int result)
 {

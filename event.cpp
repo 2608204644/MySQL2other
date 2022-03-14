@@ -1,7 +1,3 @@
-//
-// Created by cha on 2022/3/10.
-//
-
 #include "event.h"
 #include "event.h"
 
@@ -133,7 +129,7 @@ int TablemapEvent::Parse(char *buf, uint32_t &pos, uint32_t buf_len, FormatEvent
 }
 
 uint16_t TablemapEvent::ReadMeta(MemBlock &column_meta_def, uint32_t &meta_pos, uint8_t column_type) {
-  uint16_t u16Meta = 0;
+  uint16_t meta = 0;
   if (column_type == MYSQL_TYPE_TINY_BLOB ||
       column_type == MYSQL_TYPE_BLOB ||
       column_type == MYSQL_TYPE_MEDIUM_BLOB ||
@@ -144,21 +140,21 @@ uint16_t TablemapEvent::ReadMeta(MemBlock &column_meta_def, uint32_t &meta_pos, 
       column_type == MYSQL_TYPE_TIME2 ||
       column_type == MYSQL_TYPE_DATETIME2 ||
       column_type == MYSQL_TYPE_TIMESTAMP2) {
-    u16Meta = (uint16_t) (uint8_t) column_meta_def.At(meta_pos);
+    meta = (uint16_t) (uint8_t) column_meta_def.At(meta_pos);
     meta_pos += 1;
   } else if (column_type == MYSQL_TYPE_NEWDECIMAL ||
       column_type == MYSQL_TYPE_VAR_STRING ||
       column_type == MYSQL_TYPE_STRING ||
       column_type == MYSQL_TYPE_SET ||
       column_type == MYSQL_TYPE_ENUM) {
-    u16Meta = ((uint16_t) (uint8_t) column_meta_def.At(meta_pos) << 8)
+    meta = ((uint16_t) (uint8_t) column_meta_def.At(meta_pos) << 8)
         | ((uint16_t) (uint8_t) column_meta_def.At(meta_pos + 1));
     meta_pos += 2;
   } else if (column_type == MYSQL_TYPE_VARCHAR) {
-    u16Meta = uint2korr(column_meta_def.m_pBlock + meta_pos);
+    meta = uint2korr(column_meta_def.m_pBlock + meta_pos);
     meta_pos += 2;
   } else if (column_type == MYSQL_TYPE_BIT) {
-    u16Meta = ((uint16_t) (uint8_t) column_meta_def.At(meta_pos) << 8)
+    meta = ((uint16_t) (uint8_t) column_meta_def.At(meta_pos) << 8)
         | ((uint16_t) (uint8_t) column_meta_def.At(meta_pos + 1));
     meta_pos += 2;
 
@@ -174,13 +170,13 @@ uint16_t TablemapEvent::ReadMeta(MemBlock &column_meta_def, uint32_t &meta_pos, 
       column_type == MYSQL_TYPE_TIME ||
       column_type == MYSQL_TYPE_DATETIME ||
       column_type == MYSQL_TYPE_YEAR) {
-    u16Meta = 0;
+    meta = 0;
   } else {
     LOG(ERROR) << "TablemapEvent::ReadMeta column type can not exist in the binlog, columntype" << column_type
                << std::endl;
   }
 
-  return u16Meta;
+  return meta;
 }
 
 uint8_t TablemapEvent::GetColumnType(uint32_t column_index) {

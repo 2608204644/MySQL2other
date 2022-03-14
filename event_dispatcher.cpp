@@ -1,7 +1,3 @@
-//
-// Created by cha on 2022/3/12.
-//
-
 #include "event_dispatcher.h"
 
 void EventDispatcher::PutLineData(std::shared_ptr<LineData> data) {

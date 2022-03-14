@@ -1,7 +1,3 @@
-//
-// Created by cha on 2022/3/12.
-//
-
 #ifndef MYSQL2REDIS__MEMBLOCK_H_
 #define MYSQL2REDIS__MEMBLOCK_H_
 

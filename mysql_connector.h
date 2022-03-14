@@ -1,7 +1,3 @@
-//
-// Created by cha on 2022/3/10.
-//
-
 #ifndef MYSQL2REDIS__MYSQL_CONNECTOR_H_
 #define MYSQL2REDIS__MYSQL_CONNECTOR_H_
 

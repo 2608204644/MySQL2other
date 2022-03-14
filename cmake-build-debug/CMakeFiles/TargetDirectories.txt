@@ -1,3 +1,0 @@
-/mnt/e/MyCode/GitHub/MySQL2other/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/mnt/e/MyCode/GitHub/MySQL2other/cmake-build-debug/CMakeFiles/edit_cache.dir
-/mnt/e/MyCode/GitHub/MySQL2other/cmake-build-debug/CMakeFiles/mysql2redis.dir

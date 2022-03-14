@@ -1,7 +1,3 @@
-//
-// Created by cha on 2022/3/10.
-//
-
 #include "filter.h"
 
 int Filter::FilterData(std::shared_ptr<LineData> &line_data) {
