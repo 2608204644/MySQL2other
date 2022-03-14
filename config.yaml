@@ -1,0 +1,33 @@
+mysql:
+  connect:
+    mysql_ip: 172.21.16.1
+    mysql_port: 3308
+    username: root
+    password: 456123az
+    need_decode: false
+    server_id: 1
+  filter:
+    - database: mysql2other
+      table: student
+      reserve_column_name:
+        - index: 1
+          name: Sno
+        - index: 2
+          name: Sname
+        - index: 3
+          name: Ssex
+redis:
+  connect:
+    redis_ip: 172.21.16.1
+    redis_port: 6379
+    need_passwd: false
+    password: 0
+  import:
+    - db_table: mysql2other_student
+      key_prefix: student_
+      key_name: Sno
+      value:
+        - Sname
+        - Ssex
+
+
